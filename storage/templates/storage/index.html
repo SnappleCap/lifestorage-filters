@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample Project</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'storage/style.css' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="main">
+<h1 class="sectionTitle">Life Storage</h1>
+<div class="sep"></div>
+
+  <ul id="filters" class="noList">
+    <li><span>Filters</span> <a class="btn mobFilter">Filters <i class="fas fa-plus"></i></a></li>
+    <form method="get" id="filterform">
+      <li>
+        {{ filter.form.broadSizeCategory }}
+      </li>
+      <li>
+        {{ filter.form.strSpecial }}
+      </li>
+      <li>
+        {{ filter.form.strUnitType }}
+      </li>
+    </form>
+  </ul>
+
+  
+
+  <ul id="rows" class="noList">
+    {% for str in filter.qs %}
+      {% if str.dblTtlAvail > 0 %}
+        <li class="storeRow">
+          {% if str.strSpecial == 'W' or str.strSpecial == 'X' %}
+            <div class="special"> <i class="fas fa-tag"></i> <img src="https://www.lifestorage.com/assets/img/storephotos/life-storage-840-1-facility-07122018.jpg" alt="Life Storage" class="storePhoto"></div>
+          {% else %}
+            <img src="https://www.lifestorage.com/assets/img/storephotos/life-storage-840-1-facility-07122018.jpg" alt="Life Storage" class="storePhoto">
+          {% endif %}
+            <ul class="storeDetails noList">
+              <li><strong>Store #{{ str.intprop.intprop }}</strong></li>
+              {% if str.strSpecial == 'X' %}
+                <li class="unitSpecial">Second Month Free</li>
+              {% endif %}
+              {% if str.strSpecial == 'W' %}
+                <li class="unitSpecial">50% Off Second Month</li>
+              {% endif %}
+              <li>
+                <span>{{ str.intprop.address }}</span>
+                {{ str.intprop.city }}, {{ str.intprop.st }}, {{ str.intprop.postalcode }}
+              </li>
+              <li>Phone: {{ str.intprop.phone }}</li>
+            </ul>
+            <div class="price">
+            Price: 
+            <strong>${{ str.dblcurrentrate }}</strong>
+             <a class="btn">Continue</a>
+            </div>
+        </li>
+      {% endif %}
+    {% empty %}
+      <h2>No stores found! Please search again.</h2>
+    {% endfor %}
+  </ul>
+  
+<script>
+    $(".mobFilter").click(function() {
+    $("#filters li").toggleClass("show");
+    $("i", this).toggleClass("fas fa-plus fas fa-minus");
+  });
+//     $(document).ready(function(){
+//     $("#filterform").on("change", "#id_broadSizeCategory_0", function(){
+//         $("#filterform").submit();
+//     });
+// });
+</script>
+
+</div>  
+</body>
+</html>

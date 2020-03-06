@@ -1,0 +1,76 @@
+/* Sample Project CSS */
+
+
+/* Global */
+body { margin: 0; font-family: 'Open Sans', 'OpenSans', 'Helvetica Neue', sans-serif; color: #494949; min-height: 100%; }
+*, *:before, *:after { box-sizing: border-box; }
+h1 { font-size: 2.2rem; text-align: center; font-weight: 300; margin: 50px 0 30px; line-height: 1em; }
+.sep { border-bottom: 2px solid #ffc600; border-right: 0; border-left: 0; width: 80px; overflow: hidden; border-top: 0; margin: 0 auto 50px; clear: both; }
+#main { width: 1140px; margin: 0 auto 60px; overflow: hidden;  }
+#filters { float: left; margin: 0 6% 0 0; width: 20%; border-right: 1px solid #ccc; height: 100vh; list-style-type: none !important; }
+#filters li { margin: 0 0 10px; list-style-type: none; }
+#filters li:first-child { font-weight: 700; font-size: 1.1rem; margin: 0 0 20px;}
+#filters li.show { display: block; }
+#filters li.show:last-child { margin-bottom: 20px; }
+#rows { float: left; width: 71% }
+#rows li:first-child { padding-top: 0; }
+#rows .storeRow:last-child { border-bottom: 0 none; }
+.noList { margin: 0; padding: 0; list-style: none; }
+.storePhoto { width: 145px; float: left; margin: 0 25px 0 0; }
+.storeRow { border-bottom: 1px solid #ccc; clear: both; float: left; width: 100%; padding: 20px 0; }
+.storeRow strong { margin: 0 0 5px; display: block; }
+.storeDetails { width: 35%; float: left; }
+.storeDetails li span { display: block; }
+.storeDetails.noList li { margin: 0 0 3px; font-size: .9rem; }
+.storeDetails.noList li:first-child { margin: 0 0 3px; font-size: 1rem; }
+.btn { background: #0D57C0; border-radius: 2px; color: #FFF; cursor: pointer; padding: 15px 20px; font-weight: 800; }
+.btn:hover { background: #0a61db; }
+.price { float: right; text-align: center; color: #29984c; }
+.price .btn { margin: 5px 0 0; float: left; }
+.price strong { font-size: 1.3rem; }
+.storeDetails.noList .unitSpecial { color: #0075DB; margin: 0 0 5px; display: block; font-weight: 600; }
+.mobFilter { display: none; }
+.special { position: relative; }
+.special .fa-tag { background: #0079e2; color: #FFF; border-radius: 50%; height: 27px; width: 27px; text-align: center; padding: 8px 0; font-size: 0.7rem; position: absolute; left: -8px; top: -6px; }
+.control:hover input ~ .indicator, .control input:focus ~ .indicator { background: #eee; }
+.control input:checked ~ .indicator { background: #0079e2; border: 0 none; }
+.control:hover input:not([disabled]):checked ~ .indicator, .control input:checked:focus ~ .indicator { background: #0079e2; }
+.control input:disabled ~ .indicator { pointer-events: none; opacity: .6; background: #e6e6e6; }
+.indicator:after { position: absolute; display: none; content: ''; }
+.control input:checked ~ .indicator:after { display: block; }
+.checkbox .indicator:after { top: 3.4px; left: 8px; width: 5px; height: 10px; transform: rotate(45deg); border: solid #fff; border-width: 0 2px 2px 0; }
+.checkbox input:disabled ~ .indicator:after { border-color: #7b7b7b; }
+.control--radio .indicator:after { top: 7px; left: 7px; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.control--radio input:disabled ~ .indicator:after { background: #7b7b7b; }
+.control { position: relative; display: block; padding-left: 30px; cursor: pointer; }
+.control input { position: absolute; z-index: -1; opacity: 0; }
+.indicator { position: absolute; top: 0; left: 0; width: 20px; height: 20px; background: #FFF; border: 1px solid #ccc; }
+.control--radio .indicator { border-radius: 50%; }
+
+/* Error/No Results Found */
+.error { list-style: none; margin: 0 0 30px; font-size: .875rem; color: #D10000; background: #ffefef; padding: 20px 25px; border-radius: 4px; border: 1px solid #D10000; }
+
+
+/* Media Queries */
+@media (max-width:1140px) {
+	#main { width: 100%; padding: 0 20px; }
+}
+
+@media (max-width:1023px) {
+	#filters, #rows, #primary, #secondary { width: 100%; }
+	#filters { height: auto; border: 0 none; }
+	#filters li:first-child { display: block; }
+	#filters li:first-child span { display: none; }
+	#filters li { display: none; }
+	.mobFilter { display: inline-block; width: 100%; background: #0d4490; }
+	.mobFilter i { float: right; position: relative; top: 3px; }
+}
+
+@media (max-width:680px) {
+	.storePhoto, .price { width: 100%; margin: 0 0 20px; }
+	.price { float: left; width: 100%; }
+	.price .btn, .storeDetails { width: 100%; }
+	.storeDetails { margin: 0 0 10px; }
+	.storeRow { padding: 20px 0 0; }
+	#filters { margin: 0; }
+}
