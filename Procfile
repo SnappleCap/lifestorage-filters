@@ -1,1 +1,1 @@
-'web: gunicorn lifestorage/storage.wsgi --log-file -' 
+'web: gunicorn lifestorage/lifestorage.wsgi --log-file -'
