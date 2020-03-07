@@ -1,1 +1,1 @@
-web: gunicorn lifestorage/lifestorage.wsgi --log-file -
+web: gunicorn lifestorage.wsgi --log-file -
