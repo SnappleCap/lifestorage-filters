@@ -74,3 +74,7 @@ h1 { font-size: 2.2rem; text-align: center; font-weight: 300; margin: 50px 0 30p
 	.storeRow { padding: 20px 0 0; }
 	#filters { margin: 0; }
 }
+
+ul {
+	padding-left: 0 !important;
+}

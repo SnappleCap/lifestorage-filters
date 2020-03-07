@@ -3,7 +3,7 @@ import django_filters
 from phone_field import PhoneField
 
 class Store(models.Model):
-    intprop = models.IntegerField(primary_key='True')
+    storeid = models.IntegerField(primary_key='True')
     phone = PhoneField()
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
@@ -18,7 +18,7 @@ class Store(models.Model):
 
 
 class StoreInventory(models.Model):
-    intprop = models.ForeignKey(Store, to_field='intprop', on_delete=models.CASCADE)
+    intprop = models.ForeignKey(Store, to_field='storeid', on_delete=models.CASCADE)
     strUnitType = models.CharField(max_length=5)
     strInside = models.CharField(max_length=1)
     dblfloor = models.IntegerField()

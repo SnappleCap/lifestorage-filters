@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="main">
-<h1 class="sectionTitle">Life Storage</h1>
+<h1 class="sectionTitle">Glen Noworyta's Life Storage Project</h1>
 <div class="sep"></div>
 
   <ul id="filters" class="noList">
@@ -27,41 +27,43 @@
       <li>
         {{ filter.form.strUnitType }}
       </li>
+      <li>
+        {{ filter.form.ftruckrental }}
     </form>
   </ul>
 
-  
+  <!-- {% for x in filter.dstnct %}
+    <h4>{{ x }}</h4>
+  {% endfor %} -->
 
   <ul id="rows" class="noList">
-    {% for str in filter.qs %}
-      {% if str.dblTtlAvail > 0 %}
+    {% for str in filter.dstnct %}
         <li class="storeRow">
-          {% if str.strSpecial == 'W' or str.strSpecial == 'X' %}
+          {% if str.strSpecial__max == 'W' or str.strSpecial__max == 'X' %}
             <div class="special"> <i class="fas fa-tag"></i> <img src="https://www.lifestorage.com/assets/img/storephotos/life-storage-840-1-facility-07122018.jpg" alt="Life Storage" class="storePhoto"></div>
           {% else %}
             <img src="https://www.lifestorage.com/assets/img/storephotos/life-storage-840-1-facility-07122018.jpg" alt="Life Storage" class="storePhoto">
           {% endif %}
             <ul class="storeDetails noList">
-              <li><strong>Store #{{ str.intprop.intprop }}</strong></li>
-              {% if str.strSpecial == 'X' %}
+              <li><strong>Store #{{ str.storenum }}</strong></li>
+              {% if str.strSpecial__max == 'X' %}
                 <li class="unitSpecial">Second Month Free</li>
               {% endif %}
-              {% if str.strSpecial == 'W' %}
+              {% if str.strSpecial__max == 'W' %}
                 <li class="unitSpecial">50% Off Second Month</li>
               {% endif %}
               <li>
-                <span>{{ str.intprop.address }}</span>
-                {{ str.intprop.city }}, {{ str.intprop.st }}, {{ str.intprop.postalcode }}
+                <span>{{ str.address }}</span>
+                {{ str.city }}, {{ str.st }}, {{ str.postalcode }}
               </li>
-              <li>Phone: {{ str.intprop.phone }}</li>
+              <li>Phone: {{ str.phone }}</li>
             </ul>
             <div class="price">
-            Price: 
-            <strong>${{ str.dblcurrentrate }}</strong>
+            as low as
+            <strong>Price: ${{ str.dblcurrentrate__min }}</strong>
              <a class="btn">Continue</a>
             </div>
         </li>
-      {% endif %}
     {% empty %}
       <h2>No stores found! Please search again.</h2>
     {% endfor %}
