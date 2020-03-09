@@ -20,18 +20,24 @@ CC_CHOICES = (
 )
 
 FTR_CHOICES = (
-	(-1, 'Free Truck Rental'),
+	('', 'Free Truck Rental'),
 )
 
 class StoreInventoryFilter(django_filters.FilterSet):
 	broadSizeCategory = filters.MultipleChoiceFilter(label='', choices=SIZE_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
-	strSpecial = filters.MultipleChoiceFilter(label='', choices=SPECIALS_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}), exclude=True)
+	strSpecial = filters.MultipleChoiceFilter(method='str_special_filter', label='', choices=SPECIALS_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
+	# strSpecial = filters.MultipleChoiceFilter(label='', choices=SPECIALS_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}), exclude=True)
 	strUnitType = filters.MultipleChoiceFilter(label='', choices=CC_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
 	ftruckrental = filters.MultipleChoiceFilter(method='truck_rental_filter', label='', choices=FTR_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
 
 	class Meta:
 		model = StoreInventory
 		fields = ['broadSizeCategory', 'strSpecial', 'strUnitType', 'dblTtlAvail']
+
+	def str_special_filter(self, queryset, name, value):
+		return queryset.filter(
+			Q(strSpecial__exact='W') | Q(strSpecial__exact='X')
+		)
 
 	def truck_rental_filter(self, queryset, name, value):
 		return queryset.filter(
