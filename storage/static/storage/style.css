@@ -59,8 +59,8 @@ h1 { font-size: 2.2rem; text-align: center; font-weight: 300; margin: 50px 0 30p
 @media (max-width:1023px) {
 	#filters, #rows, #primary, #secondary { width: 100%; }
 	#filters { height: auto; border: 0 none; }
-	#filters li:first-child { display: block; }
-	#filters li:first-child span { display: none; }
+	#filters #filtertoggle { display: block; }
+	#filters #filtertoggle span { display: none; }
 	#filters li { display: none; }
 	.mobFilter { display: inline-block; width: 100%; background: #0d4490; }
 	.mobFilter i { float: right; position: relative; top: 3px; }

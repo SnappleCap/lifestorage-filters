@@ -16,7 +16,7 @@
 <div class="sep"></div>
 
   <ul id="filters" class="noList">
-    <li><span>Filters</span> <a class="btn mobFilter">Filters <i class="fas fa-plus"></i></a></li>
+    <li id="filtertoggle"><span>Filters</span> <a class="btn mobFilter">Filters <i class="fas fa-plus"></i></a></li>
     <form method="get" id="filterform">
       <li>
         {{ filter.form.broadSizeCategory }}
@@ -29,6 +29,7 @@
       </li>
       <li>
         {{ filter.form.ftruckrental }}
+      </li>
     </form>
   </ul>
 
@@ -74,11 +75,6 @@
     $("#filters li").toggleClass("show");
     $("i", this).toggleClass("fas fa-plus fas fa-minus");
   });
-//     $(document).ready(function(){
-//     $("#filterform").on("change", "#id_broadSizeCategory_0", function(){
-//         $("#filterform").submit();
-//     });
-// });
 </script>
 
 </div>  

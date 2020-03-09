@@ -24,7 +24,7 @@ FTR_CHOICES = (
 )
 
 class StoreInventoryFilter(django_filters.FilterSet):
-	broadSizeCategory = filters.MultipleChoiceFilter(label='', choices=SIZE_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
+	broadSizeCategory = filters.MultipleChoiceFilter(label='', choices=SIZE_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()', 'class':'hide'}))
 	strSpecial = filters.MultipleChoiceFilter(method='str_special_filter', label='', choices=SPECIALS_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
 	# strSpecial = filters.MultipleChoiceFilter(label='', choices=SPECIALS_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}), exclude=True)
 	strUnitType = filters.MultipleChoiceFilter(label='', choices=CC_CHOICES, widget=forms.CheckboxSelectMultiple(attrs={'onclick':'this.form.submit()'}))
